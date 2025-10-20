@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calendario interactivo con FullCalendar">
+    <meta name="theme-color" content="#333333">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mi PWA">
+    
+    <title>Calendario | PWA</title>
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192x192.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css">
+</head>
+
+<body class="p-6 text-center">
+    <header class="site-header">
+        <a href="./index.html" class="brand">
+            <span class="brand-name">PWA</span>
+        </a>
+        <nav class="nav-links">
+            <a href="./index.html" class="link">Inicio</a>
+            <a href="./calendar.html" class="link">Calendario</a>
+            <a href="./form.html" class="link">Formulario</a>
+            <a href="./about.html" class="link">Acerca</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h1 class="text-2xl font-bold mb-4">Calendario</h1>
+            <div id="calendar"></div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es'
+            });
+            calendar.render();
+        });
+    </script>
+
+    <script src="./register.js"></script>
+</body>
+
+</html>

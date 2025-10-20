@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de contacto con Select2">
+    <meta name="theme-color" content="#333333">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mi PWA">
+    
+    <title>Contacto | Jassiel — PWA</title>
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192x192.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body class="p-6">
+    <header class="site-header">
+        <a href="./index.html" class="brand">
+            <div class="logo">J</div>
+            <span class="brand-name">Jassiel PWA</span>
+        </a>
+        <nav class="nav-links" aria-label="Navegación principal">
+            <a href="./index.html" class="link">Inicio</a>
+            <a href="./calendar.html" class="link">Calendario</a>
+            <a href="./form.html" class="link">Formulario</a>
+            <a href="./about.html" class="link">Acerca</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="hero-card" style="margin-bottom:1.25rem; text-align:center;">
+            <h1 class="hero-title">Bienvenido</h1>
+            <p class="hero-sub">Si quieres contactarme, usa el formulario básico abajo.</p>
+        </div>
+
+        <div class="card" style="max-width:520px;margin:0 auto;">
+            <h2 style="margin-top:0;margin-bottom:0.75rem;font-size:1.125rem;font-weight:700;color:var(--text)">Contacto rápido</h2>
+            <div id="form-messages" style="margin-bottom:0.75rem; display:none;"></div>
+
+            <form id="contactForm" class="" novalidate>
+                <label for="nombre" class="block mb-2 font-semibold">Nombre</label>
+                <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+
+                <label for="email" class="block mb-2 font-semibold" style="margin-top:0.6rem;">Email</label>
+                <input id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required />
+
+                <label for="mensaje" class="block mb-2 font-semibold" style="margin-top:0.6rem;">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe un mensaje corto" required></textarea>
+
+                <div style="margin-top:0.9rem; text-align:center;">
+                    <button type="submit" class="btn">Enviar</button>
+                    <button type="button" id="resetBtn" class="btn secondary" style="margin-left:0.5rem;">Limpiar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Simple JS sin dependencias externas
+        function showMessage(text, type = 'success') {
+            const el = document.getElementById('form-messages');
+            el.textContent = text;
+            el.style.display = 'block';
+            el.style.padding = '0.6rem';
+            el.style.borderRadius = '8px';
+            if (type === 'success') {
+                el.style.background = '#ecfdf5';
+                el.style.color = '#064e3b';
+                el.style.border = '1px solid #bbf7d0';
+            } else {
+                el.style.background = '#fff1f2';
+                el.style.color = '#831843';
+                el.style.border = '1px solid #fecaca';
+            }
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            if (!nombre || !email || !mensaje) {
+                showMessage('Por favor completa todos los campos.', 'error');
+                return;
+            }
+
+            showMessage('¡Mensaje enviado! Gracias, ' + nombre + '.');
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+                document.getElementById('form-messages').style.display = 'none';
+            }, 1200);
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function () {
+            document.getElementById('contactForm').reset();
+            document.getElementById('form-messages').style.display = 'none';
+        });
+    </script>
+
+    <script src="./register.js"></script>
+</body>
+
+</html>

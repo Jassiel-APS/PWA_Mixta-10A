@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación web progresiva con calendario y formularios">
+    <meta name="theme-color" content="#333333">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mi PWA">
+    
+    <title>Inicio | Jassiel — PWA</title>
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192x192.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="p-6">
+    <header class="site-header">
+        <a href="./index.html" class="brand">
+            <div class="logo">J</div>
+            <span class="brand-name">Jassiel PWA</span>
+        </a>
+        <nav class="nav-links" aria-label="Navegación principal">
+            <a href="./index.html" class="link">Inicio</a>
+            <a href="./calendar.html" class="link">Calendario</a>
+            <a href="./form.html" class="link">Formulario</a>
+            <a href="./about.html" class="link">Acerca</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-card">
+                <h0 class="welcome">Bienvenido</h0>
+                <h1 class="hero-title">Hola, soy</h1>
+                <h2 class="hero-name">Jassiel Alejandro Peralta Santos</h2>
+                <p class="hero-sub">Estudiante de Ingeniería en Desarrollo y Gestión de Software — UTEZ · 10mo Cuatrimestre</p>
+                <div class="hero-actions">
+                    <a class="btn" href="./about.html">Conóceme</a>
+                    <a class="btn secondary" href="./form.html">Contacto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./register.js"></script>
+</body>
+
+</html>

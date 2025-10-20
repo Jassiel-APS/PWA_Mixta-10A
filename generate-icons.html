@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Iconos PWA</title>
+</head>
+<body>
+    <h1>Generador de Iconos</h1>
+    <p>Descarga cada canvas como PNG con el nombre indicado y guárdalos en la carpeta /icons/</p>
+    <div id="icons"></div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const container = document.getElementById('icons');
+
+        sizes.forEach(size => {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            // Fondo
+            ctx.fillStyle = '#333333';
+            ctx.fillRect(0, 0, size, size);
+
+            // Borde
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = size * 0.05;
+            ctx.strokeRect(size * 0.1, size * 0.1, size * 0.8, size * 0.8);
+
+            // Letra P
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${size * 0.6}px Arial, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('P', size / 2, size / 2);
+
+            // Mostrar
+            const wrapper = document.createElement('div');
+            wrapper.style.marginBottom = '20px';
+            
+            const title = document.createElement('h3');
+            title.textContent = `icon-${size}x${size}.png`;
+            
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = `icon-${size}x${size}.png`;
+            link.textContent = 'Descargar';
+            link.style.display = 'inline-block';
+            link.style.marginLeft = '10px';
+            link.style.padding = '5px 10px';
+            link.style.background = '#333';
+            link.style.color = 'white';
+            link.style.textDecoration = 'none';
+            link.style.borderRadius = '4px';
+
+            wrapper.appendChild(title);
+            wrapper.appendChild(canvas);
+            wrapper.appendChild(link);
+            container.appendChild(wrapper);
+        });
+    </script>
+</body>
+</html>
